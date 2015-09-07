@@ -1,0 +1,76 @@
+<AbsoluteLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SetActivity"
+    android:background="@drawable/camera_app_background">
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="20dp"
+        android:layout_y="15dp"
+        android:text=" Name "
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:background="#ffffff"
+        />
+
+    <EditText
+        android:id="@+id/editName"
+        android:layout_width="250dp"
+        android:layout_height="40dp"
+        android:layout_x="110dp"
+        android:layout_y="5dp"
+        android:ems="10"
+        android:background="#ffffff" >
+        <requestFocus />
+    </EditText>
+
+    <Button
+        android:id="@+id/snapBtn"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:layout_y="50dp"
+        android:onClick="onSnapButton"
+        android:text="snap" />
+
+    <ImageView
+        android:id="@+id/preview"
+        android:layout_width="280dp"
+        android:layout_height="240dp"
+        android:layout_x="50dp"
+        android:layout_y="100dp"
+        android:src="#000000" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="20dp"
+        android:layout_y="360dp"
+        android:text=" Location "
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:background="#ffffff"
+        />
+
+    <EditText
+        android:id="@+id/editLocation"
+        android:layout_width="220dp"
+        android:layout_height="40dp"
+        android:layout_x="140dp"
+        android:layout_y="350dp"
+        android:ems="10"
+        android:background="#ffffff"
+        >
+    </EditText>
+
+    <Button
+        android:id="@+id/saveBtn"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:layout_y="403dp"
+        android:onClick="onSaveButton"
+        android:text="save" />
+
+</AbsoluteLayout>
