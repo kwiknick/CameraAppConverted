@@ -1,5 +1,6 @@
 package edu.rasmussen.mobile.nwillard.cameraapp;
 
+import android.media.ExifInterface;
 import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
@@ -25,6 +26,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends Activity {
@@ -80,7 +82,7 @@ public class MainActivity extends Activity {
     private void StopLocation() {
         if (netListener != null) locMgr.removeUpdates(netListener);
         if (gpsListener != null) locMgr.removeUpdates(gpsListener);
-        Log.w("CameraExample", "Closing Down GPS");
+        Log.w("Camera App", "Closing Down GPS");
     }
 
     @Override
@@ -179,10 +181,41 @@ public class MainActivity extends Activity {
             // move temp file to files directory (permanent storage)
             File temp = new File(getFilesDir(), tempPhoto);
             temp.renameTo(new File(getFilesDir(), Photo));
-
+            TextView exifTextView;
+            exifTextView = (TextView) findViewById(R.id.exifTextBox);
+            String fileName = Photo;
+            try {
+                ExifInterface exif = new ExifInterface(Photo);
+                ShowExif(exif, exifTextView);
+            } catch (IOException e){
+                e.printStackTrace();
+                Toast.makeText(this, "Error!", Toast.LENGTH_LONG).show();
+            }
         } else {
             Toast.makeText(MainActivity.this, "Sorry Need a picture and Location First !", Toast.LENGTH_LONG).show();
         }
+    }
+
+    private void ShowExif(ExifInterface exif, TextView exifTextView) {
+        String myAttribute="Exif information ---\n";
+        myAttribute += getTagString(ExifInterface.TAG_DATETIME, exif);
+        myAttribute += getTagString(ExifInterface.TAG_FLASH, exif);
+        myAttribute += getTagString(ExifInterface.TAG_GPS_LATITUDE, exif);
+        myAttribute += getTagString(ExifInterface.TAG_GPS_LATITUDE_REF, exif);
+        myAttribute += getTagString(ExifInterface.TAG_GPS_LONGITUDE, exif);
+        myAttribute += getTagString(ExifInterface.TAG_GPS_LONGITUDE_REF, exif);
+        myAttribute += getTagString(ExifInterface.TAG_IMAGE_LENGTH, exif);
+        myAttribute += getTagString(ExifInterface.TAG_IMAGE_WIDTH, exif);
+        myAttribute += getTagString(ExifInterface.TAG_MAKE, exif);
+        myAttribute += getTagString(ExifInterface.TAG_MODEL, exif);
+        myAttribute += getTagString(ExifInterface.TAG_ORIENTATION, exif);
+        myAttribute += getTagString(ExifInterface.TAG_WHITE_BALANCE, exif);
+        exifTextView.setText(myAttribute);
+    }
+
+    private String getTagString(String tag, ExifInterface exif)
+    {
+        return(tag + " : " + exif.getAttribute(tag) + "\n");
     }
 
     // LOCATION stuff
@@ -206,6 +239,11 @@ public class MainActivity extends Activity {
             gpsPos = loc.getLatitude() + " # " + loc.getLongitude();
             location.setText(cityName);
             StopLocation();
+        }
+
+        public void ExifReader(String photoFile) {
+            TextView exifTextView;
+            String fileName = photoFile;
         }
 
         @Override

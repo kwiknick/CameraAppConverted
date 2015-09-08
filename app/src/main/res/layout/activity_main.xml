@@ -13,7 +13,7 @@
         android:layout_y="15dp"
         android:text=" Name "
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:background="#ffffff"
+        android:background="#FFFFFF"
         />
 
     <EditText
@@ -23,7 +23,7 @@
         android:layout_x="110dp"
         android:layout_y="5dp"
         android:ems="10"
-        android:background="#ffffff" >
+        android:background="#FFFFFF" >
         <requestFocus />
     </EditText>
 
@@ -51,7 +51,7 @@
         android:layout_y="360dp"
         android:text=" Location "
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:background="#ffffff"
+        android:background="#FFFFFF"
         />
 
     <EditText
@@ -61,7 +61,7 @@
         android:layout_x="140dp"
         android:layout_y="350dp"
         android:ems="10"
-        android:background="#ffffff"
+        android:background="#FFFFFF"
         >
     </EditText>
 
